@@ -2,11 +2,11 @@ import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 
 import { getPosts } from '../services'
-import type { Post } from '../lib/types'
+import type { PostT } from '../lib/types'
 import { PostCard, Categories, PostWidget } from '../components'
 
 interface HomeProps {
-  posts: Post[]
+  posts: PostT[]
 }
 
 const Home: NextPage<HomeProps> = ({posts}) => {

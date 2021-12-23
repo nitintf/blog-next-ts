@@ -1,2 +1,2 @@
-export type { Post } from './post';
-export type { Categories } from './categories' 
+export type { PostT } from './post';
+export type { CategoriesT } from './categories' 

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-import type { Categories } from '../lib/types'
+import type { CategoriesT } from '../lib/types'
 import { getCategories } from '../services'
 
 const Header = (): JSX.Element => {
-  const [categories, setCategories] = useState<Categories[]>()
+  const [categories, setCategories] = useState<CategoriesT[]>()
 
   useEffect(() => {
     getCategories()

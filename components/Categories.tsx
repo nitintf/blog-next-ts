@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 import Link from 'next/link'
 
 import { getCategories } from '../services'
-import type { Categories } from '../lib/types'
+import type { CategoriesT } from '../lib/types'
 
 const Categories = ():JSX.Element => {
-  const [categories, setCategories] = useState<Categories[]>()
+  const [categories, setCategories] = useState<CategoriesT[]>()
 
   useEffect(() => {
     getCategories()

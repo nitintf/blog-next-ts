@@ -1,22 +1,22 @@
-import type { Categories } from './categories';
+import type { CategoriesT } from './categories';
 
-export interface Post {
+export interface PostT {
   title: string;
   excerpt?: string;
   createdAt?: string;
   slug: string;
-  author?: Author;
-  categories?: Categories[];
-  featuredImage: Photo
+  author: AuthorT;
+  categories?: CategoriesT[];
+  featuredImage: PhotoT
 }
 
-export type Author = {
+export type AuthorT = {
   description: string;
   id: string;
   name: string;
-  photo: Photo;
+  photo: PhotoT;
 }
 
-export type Photo = {
+export type PhotoT = {
   url: string
 }

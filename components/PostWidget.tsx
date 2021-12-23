@@ -2,17 +2,17 @@ import React, {useState, useEffect} from 'react'
 import moment from 'moment'
 import Link from 'next/link'
 
-import type { Post, Categories } from '../lib/types'
+import type { PostT, CategoriesT } from '../lib/types'
 import { getRecentPosts, getSimilarPosts } from '../services'
 import Image from 'next/image'
 
 type Props = {
-  categories: Categories;
-  slug: string
+  categories?: CategoriesT;
+  slug?: string
 }
 
 const PostWidget = ({ categories, slug }: Props):JSX.Element => {
-  const [relatedPosts, setRelatedPost] = useState<Post[]>()
+  const [relatedPosts, setRelatedPost] = useState<PostT[]>()
   const [loading, setLoading] = useState<Boolean>(true)
 
   useEffect(() => {

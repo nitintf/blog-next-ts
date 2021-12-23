@@ -3,10 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import moment from 'moment'
 
-import type { Post } from '../lib/types'
+import type { PostT } from '../lib/types'
 
 export interface PostProps {
-  post: Post
+  post: PostT
 }
 
 const PostCard = ({post}: PostProps):JSX.Element => {
@@ -28,10 +28,10 @@ const PostCard = ({post}: PostProps):JSX.Element => {
       <div className='block lg:flex text-center items-center justify-center mb-8 w-full'>
         <div className='flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
           <Image
-            alt={post.author.name}
+            alt={post.author?.name}
             height={30}
             width={30}
-            src={post.author.photo.url}
+            src={post.author?.photo.url}
             className='align-middle rounded-full'
           />
           <p className='inline align-middle text-gray-700 ml-2 text-lg'>

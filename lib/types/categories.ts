@@ -1,4 +1,4 @@
-export interface Categories {
+export interface CategoriesT {
   name: string;
   slug: string;
 }
