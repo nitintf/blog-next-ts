@@ -7,7 +7,8 @@ export interface PostT {
   slug: string;
   author: AuthorT;
   categories?: CategoriesT[];
-  featuredImage: PhotoT
+  featuredImage: PhotoT;
+  content?: any
 }
 
 export type AuthorT = {
