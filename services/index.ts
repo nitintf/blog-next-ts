@@ -1,5 +1,4 @@
 import { gql, request } from 'graphql-request';
-import type { Categories } from './../lib/types/categories';
 
 const GraphqlAPI: string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT!
 
@@ -37,6 +36,40 @@ export const getPosts = async () => {
 
   return results.postsConnection.edges;
 }
+export const getPostDetails = async (slug: string) => {
+  const query = gql`
+    query MyQuery($slug: String!) {
+      post(where: {slug: $slug}) {
+        author {
+          description
+          name
+          photo {
+            url
+          }
+          id
+        }
+        content {
+          raw
+        }
+        title
+        slug
+        createdAt
+        excerpt
+        featuredImage {
+          url
+        }
+        categories {
+          name
+          slug
+        }
+    }
+}
+`
+
+  const results = await request(GraphqlAPI, query, {slug})
+
+  return results;
+}
 
 export const getRecentPosts = async () => {
   const query = gql`
@@ -60,15 +93,11 @@ export const getRecentPosts = async () => {
   return result.posts
 }
 
-export const getSimilarPosts = async(categories: Categories, slug: string) => {
+export const getSimilarPosts = async (categories: string[], slug: string) => {
   const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String]) {
+    query GetPostDetails($slug: String!, $categories: [String!]) {
       posts(
-        where: {slug_not: $slug, AND: {
-          categories_some: {
-            slug_in: $categories
-          }
-        }}
+        where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
         last: 3
       ) {
         title
@@ -76,15 +105,14 @@ export const getSimilarPosts = async(categories: Categories, slug: string) => {
           url
         }
         createdAt
-        slug 
+        slug
       }
     }
-  `
-
-  const result = await request(GraphqlAPI, query);
-
-  return result.posts
-}
+  `;
+  const result = await request(GraphqlAPI, query, { slug, categories });
+  
+  return result.posts;
+};
 
 export const getCategories = async () => {
   const query = gql`
