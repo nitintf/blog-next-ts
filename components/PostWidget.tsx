@@ -7,17 +7,16 @@ import { getRecentPosts, getSimilarPosts } from '../services'
 import Image from 'next/image'
 
 type Props = {
-  categories?: CategoriesT;
+  categories?: string[];
   slug?: string
 }
 
-const PostWidget = ({ categories, slug }: Props):JSX.Element => {
+const PostWidget: React.FC<Props> = ({ categories, slug }): JSX.Element => {
   const [relatedPosts, setRelatedPost] = useState<PostT[]>()
   const [loading, setLoading] = useState<Boolean>(true)
-
   useEffect(() => {
     if (slug) {
-      getSimilarPosts(categories, slug).then((result: any) => {
+      getSimilarPosts(categories!, slug).then((result: any) => {
         setRelatedPost(result)
       })
     } else {
@@ -27,6 +26,7 @@ const PostWidget = ({ categories, slug }: Props):JSX.Element => {
     }
     setLoading(false)
   }, [categories, slug])
+
 
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 mb-8'>

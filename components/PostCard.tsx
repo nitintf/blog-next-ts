@@ -9,7 +9,7 @@ export interface PostProps {
   post: PostT
 }
 
-const PostCard = ({post}: PostProps):JSX.Element => {
+const PostCard: React.FC<PostProps> = ({post}):JSX.Element => {
   return (
     <div className='bg-white shadow-lg rounded-md p-0 lg:p-8 pb-12 mb-12'>
       <div className='relative overflow-hidden shadow-md pb-80 mb-6'>

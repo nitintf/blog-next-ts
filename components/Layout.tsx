@@ -5,7 +5,7 @@ export interface LayoutProps {
   children: JSX.Element
 }
 
-const Layout = ({ children }: LayoutProps): JSX.Element => {
+const Layout: React.FC<LayoutProps> = ({ children }): JSX.Element => {
   return (
     <>
       <Header />

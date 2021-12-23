@@ -4,7 +4,7 @@ import Link from 'next/link'
 import type { CategoriesT } from '../lib/types'
 import { getCategories } from '../services'
 
-const Header = (): JSX.Element => {
+const Header: React.FC = (): JSX.Element => {
   const [categories, setCategories] = useState<CategoriesT[]>()
 
   useEffect(() => {
