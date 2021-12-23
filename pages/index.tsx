@@ -15,7 +15,7 @@ const Home: NextPage<HomeProps> = ({posts}) => {
     <div className='container mx-auto px-10 mb-8 '>
       <Head>
         <title>CMS Blog</title>
-        <meta name="description" content="Blog created using NestJS, Typescript" />
+        <meta name="description" content="Blog created using NextJS, Typescript" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
