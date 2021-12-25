@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { submitComment } from '../services/index'
+import type { CommentT } from '../lib/types'
 
 interface Props {
   slug: string
@@ -13,7 +15,7 @@ interface FormData {
 
 const CommentsForm: React.FC<Props> = ({slug}): JSX.Element => {
   const [error, setError] = useState<boolean>(false);
-  const [localStorage, setLocalStorage] = useState<any>(null);
+  const [localStorage, setLocalStorage] = useState<any>();
   const [showSuccessMessage, setShowSuccessMessage] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({ name: undefined, email: undefined, comment: undefined, storeData: false });
 
@@ -25,7 +27,7 @@ const CommentsForm: React.FC<Props> = ({slug}): JSX.Element => {
       storeData: !!window.localStorage.getItem('name') || !!window.localStorage.getItem('email'),
     };
     setFormData(initalFormData);
-  }, []);
+  }, [localStorage]);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { target } = e;
@@ -45,12 +47,11 @@ const CommentsForm: React.FC<Props> = ({slug}): JSX.Element => {
   const handlePostSubmission = (): void => {
     setError(false);
     const { name, email, comment, storeData } = formData;
-    console.log('!name, !email, !comment :>> ', !name, !email, !comment);
     if (!name || !email || !comment) {
       setError(true);
       return;
     }
-    const commentObj = {
+    const commentObj: CommentT = {
       name,
       email,
       comment,
@@ -65,24 +66,25 @@ const CommentsForm: React.FC<Props> = ({slug}): JSX.Element => {
       localStorage.removeItem('email');
     }
 
-    // submitComment(commentObj)
-    //   .then((res) => {
-    //     if (res.createComment) {
-    //       if (!storeData) {
-    //         formData.name = '';
-    //         formData.email = '';
-    //       }
-    //       formData.comment = '';
-    //       setFormData((prevState) => ({
-    //         ...prevState,
-    //         ...formData,
-    //       }));
-    //       setShowSuccessMessage(true);
-    //       setTimeout(() => {
-    //         setShowSuccessMessage(false);
-    //       }, 3000);
-    //     }
-    //   });
+    submitComment(commentObj)
+      .then((res) => {
+        console.log('res :>> ', res);
+        if (res.createComment) {
+          if (!storeData) {
+            formData.name = '';
+            formData.email = '';
+          }
+          formData.comment = '';
+          setFormData((prevState) => ({
+            ...prevState,
+            ...formData,
+          }));
+          setShowSuccessMessage(true);
+          setTimeout(() => {
+            setShowSuccessMessage(false);
+          }, 3000);
+        }
+      });
   };
 
   return (
