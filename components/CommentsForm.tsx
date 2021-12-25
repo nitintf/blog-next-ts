@@ -27,7 +27,7 @@ const CommentsForm: React.FC<Props> = ({slug}): JSX.Element => {
     setFormData(initalFormData);
   }, []);
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { target } = e;
     if (target.type === 'checkbox') {
       setFormData((prevState) => ({
@@ -42,7 +42,7 @@ const CommentsForm: React.FC<Props> = ({slug}): JSX.Element => {
     }
   };
 
-  const handlePostSubmission = () => {
+  const handlePostSubmission = (): void => {
     setError(false);
     const { name, email, comment, storeData } = formData;
     console.log('!name, !email, !comment :>> ', !name, !email, !comment);
