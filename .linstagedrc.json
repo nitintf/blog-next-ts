@@ -1,0 +1,3 @@
+{
+  "*.{ts,tsx}": ["yarn lint-code-style", "git add"]
+}
