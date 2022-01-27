@@ -9,16 +9,30 @@
     "lint-code-style": "eslint . --ext=.js,.ts,.tsx --fix",
     "lint-check-types": "tsc --noemit",
     "lint-unused-exports": "./node_modules/.bin/ts-unused-exports tsconfig.json --allowUnusedTypes --excludePathsFromReport=pages",
-    "linter": "yarn lint-code-style && yarn lint-check-types"
+    "linter": "yarn lint-code-style && yarn lint-check-types",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.7.4",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@fontsource/montserrat": "^4.5.2",
+    "bcrypt": "^5.0.1",
+    "framer-motion": "^5",
+    "graphql": "^16.2.0",
+    "graphql-request": "^3.7.0",
+    "he": "^1.2.0",
     "next": "12.0.8",
+    "next-mdx-remote": "^3.0.8",
     "next-seo": "^4.29.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@types/node": "^17.0.11",
     "@types/react": "^17.0.38",
+    "@types/react-icons": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "babel-eslint": "^10.1.0",

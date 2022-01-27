@@ -16,21 +16,16 @@ class MyDocument extends Document {
             as='font'
             crossOrigin='anonymous'
           />
-          <link href='favicons/site.webmanifest' rel='manifest' />
-          <link rel='icon' type='image/png' href='/favicons/favicon-32x32.png' sizes='32x32' />
-          <link rel='icon' type='image/png' href='/favicons/favicon-16x16.png' sizes='16x16' />
-          <link rel='apple-touch-icon' sizes='180x180' href='/favicons/apple-touch-icon.png' />
-          <link rel='icon' type='image/png' sizes='32x32' href='/favicons/favicon-32x32.png' />
-          <link rel='icon' type='image/png' sizes='16x16' href='/favicons/favicon-16x16.png' />
-          <meta name='application-name' content='&nbsp;' />
-          <meta content='IE=edge' httpEquiv='X-UA-Compatible' />
-          <meta name='msapplication-TileColor' />
-          <meta name='msapplication-TileImage' content='mstile-144x144.png' />
-          <meta
-            content='/favicons/browserconfig.xml'
-            name='msapplication-config'
+          <link
+            rel='preload'
+            href='https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic'
+            as='font'
+            crossOrigin='anonymous'
           />
-          <link rel='mask-icon' href='/favicons/safari-pinned-tab.svg' />
+          <link
+            rel='stylesheet'
+            href='https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css'
+          />
         </Head>
         <body>
           <Main />
